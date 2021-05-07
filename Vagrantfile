@@ -33,10 +33,10 @@ Vagrant.configure(2) do |config|
 
     winworker.vm.synced_folder "./sync", "c:\\sync", smb_username: ENV['SMB_USERNAME'], smb_password: ENV['SMB_PASSWORD']
 
-    winworker.vm.provision "shell", path: "https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download//Install-Containerd.ps1", privileged: true, args: "-ContainerDVersion 1.4.4"
+    winworker.vm.provision "shell", path: "sync/Install-Hyperv.ps1", privileged: true
     winworker.vm.provision :reload
-    winworker.vm.provision "shell", path: "https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download//Install-Containerd.ps1", privileged: true, args: "-ContainerDVersion 1.4.4"
-    winworker.vm.provision "shell", path: "https://github.com/kubernetes-sigs/sig-windows-tools/releases/latest/download/PrepareNode.ps1", privileged: true, args: "-KubernetesVersion v1.21.0 -ContainerRuntime containerD"
+    winworker.vm.provision "shell", path: "sync/PrepareNode.ps1", privileged: true, args: "-KubernetesVersion v1.21.0 -ContainerRuntime containerD"
+    winworker.vm.provision "shell", path: "sync/Install-Flanneld.ps1", privileged: true
     winworker.vm.provision "shell", path: "sync/prepjoin.ps1", privileged: true
     winworker.vm.provision "shell", path: "sync/kubejoin.ps1", privileged: true
   end
