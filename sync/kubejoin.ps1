@@ -1,0 +1,1 @@
+kubeadm join 172.23.142.151:6443 --token 2t4fwl.xnb830g8ywm2ip5g --discovery-token-ca-cert-hash sha256:553e08d8b40669df1009a0f2509c9b9591082d653a7bd2e064050572c6f8d6a1 --cri-socket "npipe:////./pipe/containerd-containerd"

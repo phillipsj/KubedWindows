@@ -72,3 +72,5 @@ kubectl apply -f https://github.com/kubernetes-sigs/sig-windows-tools/releases/l
 
 rm -f /var/sync/join.txt
 kubeadm token create --print-join-command > /var/sync/join.txt
+
+kubeadm config print init-defaults > kubeadmconfig

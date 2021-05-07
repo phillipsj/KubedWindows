@@ -6,3 +6,7 @@ $joinCommand = Get-Content C:\sync\join.txt
 $joinCommand += "--cri-socket `"npipe:////./pipe/containerd-containerd`""
 
 Set-Content C:\sync\kubejoin.ps1 -Value $joinCommand
+
+if (Test-Path -Path C:\var\lib\kubelet\etc\kubernetes\manifests) {
+    New-Item -ItemType Directory -Force -Path C:\var\lib\kubelet\etc\kubernetes\manifests
+}
